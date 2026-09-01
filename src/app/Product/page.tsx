@@ -1,4 +1,3 @@
-// app/products/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -6,14 +5,102 @@ import Link from "next/link";
 import Carousel from "@/features/landingPage/components/carousel";
 
 const products = [
-  { id: 1, name: "MacBook Pro M3", price: 245000, category: "Laptops", image: "💻", slug: "macbook-pro-m3", rating: 4.8, featured: true, inStock: true },
-  { id: 2, name: "Samsung Galaxy S24 Ultra", price: 189000, category: "Phones", image: "📱", slug: "samsung-s24-ultra", rating: 4.7, featured: true, inStock: true },
-  { id: 3, name: "Sony WH-1000XM5", price: 38000, category: "Audio", image: "🎧", slug: "sony-wh-1000xm5", rating: 4.9, featured: true, inStock: true },
-  { id: 4, name: "iPad Pro 12.9", price: 145000, category: "Tablets", image: "📟", slug: "ipad-pro-129", rating: 4.6, featured: false, inStock: false },
-  { id: 5, name: "Dell XPS 15", price: 198000, category: "Laptops", image: "💻", slug: "dell-xps-15", rating: 4.5, featured: false, inStock: true },
-  { id: 6, name: "iPhone 15 Pro Max", price: 210000, category: "Phones", image: "📱", slug: "iphone-15-pro-max", rating: 4.9, featured: true, inStock: true },
-  { id: 7, name: "MacBook Air M2", price: 165000, category: "Laptops", image: "💻", slug: "macbook-air-m2", rating: 4.7, featured: false, inStock: true },
-  { id: 8, name: "PS5 Console", price: 85000, category: "Gaming", image: "🎮", slug: "ps5-console", rating: 4.8, featured: false, inStock: true },
+  { 
+    id: 1, 
+    name: "MacBook Pro M3", 
+    price: 245000, 
+    category: "Laptops", 
+    image: "/products/macbook-pro.png", 
+    slug: "macbook-pro-m3", 
+    rating: 4.8, 
+    reviewsCount: 34,
+    featured: true, 
+    inStock: true 
+  },
+  { 
+    id: 2, 
+    name: "Samsung Galaxy S24 Ultra", 
+    price: 189000, 
+    category: "Phones", 
+    image: "/products/samsung-s24.png", 
+    slug: "samsung-s24-ultra", 
+    rating: 4.7, 
+    reviewsCount: 52,
+    featured: true, 
+    inStock: true 
+  },
+  { 
+    id: 3, 
+    name: "Sony WH-1000XM5 Headphones", 
+    price: 38000, 
+    category: "Audio", 
+    image: "/products/sony-xm5.png", 
+    slug: "sony-wh-1000xm5", 
+    rating: 4.9, 
+    reviewsCount: 88,
+    featured: true, 
+    inStock: true 
+  },
+  { 
+    id: 4, 
+    name: "iPhone 15 Pro Max Titanium", 
+    price: 210000, 
+    category: "Phones", 
+    image: "/products/iphone-15.png", 
+    slug: "iphone-15-pro-max", 
+    rating: 4.9, 
+    reviewsCount: 96,
+    featured: true, 
+    inStock: true 
+  },
+  { 
+    id: 5, 
+    name: "PlayStation 5 Console", 
+    price: 85000, 
+    category: "Gaming", 
+    image: "/products/ps5-console.png", 
+    slug: "ps5-console", 
+    rating: 4.8, 
+    reviewsCount: 41,
+    featured: false, 
+    inStock: true 
+  },
+  { 
+    id: 6, 
+    name: "Dell XPS 15 Touch Edition", 
+    price: 198000, 
+    category: "Laptops", 
+    image: "/products/macbook-pro.png", 
+    slug: "dell-xps-15", 
+    rating: 4.5, 
+    reviewsCount: 19,
+    featured: false, 
+    inStock: true 
+  },
+  { 
+    id: 7, 
+    name: "MacBook Air M2 Starlight", 
+    price: 165000, 
+    category: "Laptops", 
+    image: "/products/macbook-pro.png", 
+    slug: "macbook-air-m2", 
+    rating: 4.7, 
+    reviewsCount: 27,
+    featured: false, 
+    inStock: true 
+  },
+  { 
+    id: 8, 
+    name: "iPad Pro 12.9 M2 Chip", 
+    price: 145000, 
+    category: "Tablets", 
+    image: "/products/iphone-15.png", 
+    slug: "ipad-pro-129", 
+    rating: 4.6, 
+    reviewsCount: 15,
+    featured: false, 
+    inStock: false 
+  },
 ];
 
 const categories = ["All", "Laptops", "Phones", "Audio", "Tablets", "Gaming"];
@@ -21,6 +108,7 @@ const categories = ["All", "Laptops", "Phones", "Audio", "Tablets", "Gaming"];
 export default function ProductsPage() {
   const [cat, setCat] = useState("All");
   const [search, setSearch] = useState("");
+  const [cartCount, setCartCount] = useState(0);
 
   const featured = products.filter(p => p.featured);
   const filtered = products.filter(p => 
@@ -29,168 +117,202 @@ export default function ProductsPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4">
+    <div id="Product" className="min-h-screen bg-black text-white py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+        
+        {/* Top Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 pb-6 border-b border-zinc-900">
           <div>
-            <Link 
-              href="/" 
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors"
-            >
-              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              Back to Home
-            </Link>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mt-1">
-              Our Collection
-            </h1>
-            <p className="text-gray-500 text-sm">
-              {filtered.length} products available
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-zinc-400 uppercase tracking-widest mb-1">
+              <span>Catalog Showcase</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+              Featured Products & Devices
+            </h2>
+            <p className="text-zinc-400 text-sm mt-1">
+              Showing {filtered.length} of {products.length} genuine tech products in Nairobi
             </p>
           </div>
           
           <div className="flex items-center gap-3">
-            <button className="relative bg-white px-5 py-2.5 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-gray-200">
-              <span className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                <span>🛒</span> Cart
-              </span>
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                0
+            <button 
+              onClick={() => alert(`Your cart has ${cartCount} items`)}
+              className="relative flex items-center gap-2.5 bg-zinc-900 hover:bg-zinc-800 text-white px-5 py-2.5 rounded-xl border border-zinc-800 transition shadow-md"
+            >
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              <span className="text-sm font-bold">Cart</span>
+              <span className="bg-white text-black text-xs font-black rounded-full px-2 py-0.5 ml-1">
+                {cartCount}
               </span>
             </button>
           </div>
         </div>
 
-        {/* Carousel */}
-        <div className="mb-8">
+        {/* Carousel Banner */}
+        <div className="mb-10">
           <Carousel products={featured} />
         </div>
 
-        {/* Filters */}
-        <div className="bg-white rounded-xl shadow-sm p-4 mb-6">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex flex-wrap gap-2">
+        {/* Search & Filter Control Bar */}
+        <div className="bg-zinc-900/90 backdrop-blur-md rounded-2xl border border-zinc-800 p-4 mb-8 shadow-xl">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+            
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto">
               {categories.map(c => (
                 <button 
                   key={c} 
                   onClick={() => setCat(c)} 
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
-                    ${cat === c 
-                      ? "bg-blue-600 text-white shadow-md shadow-blue-200" 
-                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
+                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-200 ${
+                    cat === c 
+                      ? "bg-white text-black shadow-md" 
+                      : "bg-black text-zinc-400 hover:bg-zinc-800 hover:text-white border border-zinc-800"
+                  }`}
                 >
                   {c}
                 </button>
               ))}
             </div>
-            
-            <div className="relative md:ml-auto">
+
+            {/* Search Input */}
+            <div className="relative w-full lg:w-72">
               <input 
                 type="text" 
-                placeholder="Search products..." 
+                placeholder="Search laptops, phones..." 
                 value={search} 
                 onChange={e => setSearch(e.target.value)} 
-                className="w-full md:w-64 px-4 py-2 pl-10 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                className="w-full bg-black border border-zinc-800 rounded-xl px-4 py-2.5 pl-10 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white transition"
               />
-              <svg className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="absolute left-3 top-3 w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
+
           </div>
         </div>
 
-        {/* Product Grid */}
+        {/* Product Cards Grid */}
         {filtered.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filtered.map(p => (
-              <Link key={p.id} href={`/products/${p.slug}`}>
-                <div className="group bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden border border-gray-100">
-                  {/* Image */}
-                  <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 p-6 flex items-center justify-center h-52 group-hover:from-blue-50 group-hover:to-indigo-50 transition-all duration-300">
-                    <span className="text-7xl group-hover:scale-110 transition-transform duration-300">
-                      {p.image}
+              <div 
+                key={p.id}
+                className="group relative flex flex-col bg-zinc-900/80 rounded-2xl overflow-hidden border border-zinc-800 hover:border-zinc-500 hover:bg-zinc-900 transition-all duration-300 shadow-lg hover:-translate-y-1"
+              >
+                {/* Product Image Stage */}
+                <div className="relative bg-zinc-950 p-6 flex items-center justify-center h-56 overflow-hidden">
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="max-h-44 object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-md"
+                  />
+                  
+                  {p.featured && (
+                    <span className="absolute top-3 right-3 bg-white text-black text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md">
+                      Featured
                     </span>
-                    {p.featured && (
-                      <span className="absolute top-3 right-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-xs font-bold text-white px-2.5 py-1 rounded-full shadow-md">
-                        ★ Featured
-                      </span>
-                    )}
-                    {!p.inStock && (
-                      <span className="absolute top-3 left-3 bg-red-500 text-xs font-bold text-white px-2.5 py-1 rounded-full shadow-md">
-                        Out of Stock
-                      </span>
-                    )}
-                  </div>
+                  )}
 
-                  {/* Content */}
-                  <div className="p-4">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded">
+                  {!p.inStock && (
+                    <span className="absolute top-3 left-3 bg-zinc-700 text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-md">
+                      Out of Stock
+                    </span>
+                  )}
+                </div>
+
+                {/* Card Details */}
+                <div className="p-5 flex flex-col flex-1 justify-between space-y-4">
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-300 bg-zinc-800 border border-zinc-700 px-2 py-0.5 rounded">
                       {p.category}
                     </span>
-                    <h3 className="font-semibold text-gray-800 mt-2 group-hover:text-blue-600 transition-colors line-clamp-1">
+                    
+                    <h3 className="font-bold text-white text-base group-hover:text-zinc-300 transition-colors mt-2 line-clamp-1">
                       {p.name}
                     </h3>
                     
-                    {/* Rating */}
-                    <div className="flex items-center gap-1 mt-1.5">
-                      <span className="text-yellow-400 text-sm">
-                        {"★".repeat(Math.round(p.rating))}
+                    {/* SVG Rating Stars */}
+                    <div className="flex items-center gap-1.5 mt-2">
+                      <div className="flex items-center text-white">
+                        {[...Array(5)].map((_, i) => (
+                          <svg
+                            key={i}
+                            className={`w-3.5 h-3.5 ${
+                              i < Math.floor(p.rating) ? "fill-current text-white" : "text-zinc-700"
+                            }`}
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                      <span className="text-zinc-400 text-xs font-semibold">
+                        {p.rating} ({p.reviewsCount})
                       </span>
-                      <span className="text-gray-400 text-xs">({p.rating})</span>
                     </div>
+                  </div>
 
-                    {/* Price & Stock */}
-                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-                      <span className="text-xl font-bold text-blue-600">
-                        KSh {p.price.toLocaleString()}
-                      </span>
-                      <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${
-                        p.inStock ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+                  {/* Pricing & Stock Status */}
+                  <div className="pt-3 border-t border-zinc-800">
+                    <div className="flex items-baseline justify-between mb-3">
+                      <div>
+                        <span className="text-xs text-zinc-400">Kenyan Shillings</span>
+                        <p className="text-xl font-black text-white">
+                          KSh {p.price.toLocaleString()}
+                        </p>
+                      </div>
+                      <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-md ${
+                        p.inStock ? "bg-zinc-800 text-white border border-zinc-700" : "bg-zinc-900 text-zinc-500 border border-zinc-800"
                       }`}>
-                        {p.inStock ? "In Stock" : "Out of Stock"}
+                        {p.inStock ? "In Stock" : "Sold Out"}
                       </span>
                     </div>
 
-                    {/* Add to Cart Button */}
+                    {/* Add to Cart CTA */}
                     <button 
-                      className={`w-full mt-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200
-                        ${p.inStock 
-                          ? "bg-blue-600 hover:bg-blue-700 text-white" 
-                          : "bg-gray-200 text-gray-400 cursor-not-allowed"
-                        }`}
-                      onClick={(e) => {
-                        e.preventDefault();
+                      disabled={!p.inStock}
+                      onClick={() => {
                         if (p.inStock) {
-                          alert(`Added ${p.name} to cart!`);
+                          setCartCount(prev => prev + 1);
                         }
                       }}
+                      className={`w-full py-2.5 rounded-xl text-xs font-extrabold flex items-center justify-center gap-2 transition-all duration-200 ${
+                        p.inStock 
+                          ? "bg-white hover:bg-zinc-200 text-black shadow-md" 
+                          : "bg-zinc-800 text-zinc-500 cursor-not-allowed"
+                      }`}
                     >
-                      {p.inStock ? "Add to Cart 🛒" : "Unavailable"}
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                      <span>{p.inStock ? "Add to Cart" : "Currently Unavailable"}</span>
                     </button>
                   </div>
+
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-2xl shadow-sm p-16 text-center">
-            <div className="text-7xl mb-4">🔍</div>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-2">No products found</h3>
-            <p className="text-gray-500">Try adjusting your search or filter criteria</p>
+          <div className="bg-zinc-900 rounded-2xl border border-zinc-800 p-16 text-center">
+            <div className="w-16 h-16 rounded-full bg-zinc-800 mx-auto flex items-center justify-center text-zinc-400 mb-4">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold text-white mb-1">No products match search criteria</h3>
+            <p className="text-zinc-400 text-sm mb-4">Try clearing filter parameters or searching another keyword.</p>
             <button 
               onClick={() => { setCat("All"); setSearch(""); }}
-              className="mt-4 text-blue-600 hover:text-blue-700 font-medium inline-flex items-center gap-1"
+              className="px-4 py-2 rounded-xl bg-white text-black font-bold text-xs hover:bg-zinc-200 transition"
             >
-              Clear filters
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              Reset Filters
             </button>
           </div>
         )}
+
       </div>
     </div>
   );
