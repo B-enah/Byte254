@@ -1,4 +1,4 @@
-# Byte254 🇰🇪
+# Byte254
 
 **Premium Tech, Kenyan Prices.** A modern e-commerce landing site and product catalog built with **Next.js**, **React**, and **Tailwind CSS** — shop genuine laptops, phones, and electronics with M-Pesa acceptance and delivery to all 47 counties.
 
@@ -6,15 +6,15 @@
 
 ## Features
 
-- 🛍️ **Product catalog** with 8 products across Laptops, Phones, Audio, Tablets, and Gaming
-- 🔍 **Live search** — filter products by name as you type
-- 🏷️ **Category filter pills** — one-click category switching
-- 🎠 **Auto-playing carousel** — flagship products rotate every 5s with arrows and pagination dots
-- ⭐ **Ratings & stock badges** — star ratings, review counts, Featured / Out-of-Stock labels
-- 🛒 **Cart state** — add-to-cart buttons with a live cart counter
-- 🌓 **Dark mode** — respects system preference, smooth color transitions
-- 💰 **KSh pricing** — thousands-separated Kenyan Shilling formatting
-- ⚡ React Compiler enabled for optimized re-renders
+- **Product catalog** with 8 products across Laptops, Phones, Audio, Tablets, and Gaming
+- **Live search** — filter products by name as you type
+- **Category filter pills** — one-click category switching
+- **Auto-playing carousel** — flagship products rotate every 5s with arrows and pagination dots
+- **Ratings & stock badges** — star ratings, review counts, Featured / Out-of-Stock labels
+- **Cart state** — add-to-cart buttons with a live cart counter
+- **Dark mode** — respects system preference, smooth color transitions
+- **KSh pricing** — thousands-separated Kenyan Shilling formatting
+- React Compiler enabled for optimized re-renders
 
 ## Tech Stack
 
@@ -213,11 +213,11 @@ Byte254/
 
 ## Roadmap / Known Limitations
 
-- 🔲 **Product detail routes** — `Product/slug/slug.tsx` is a working component scaffold, but it isn't wired as a dynamic route yet (no `Product/[slug]/page.tsx`). Product cards currently don't link to detail pages.
-- 🔲 **Persistent cart** — cart is a client-side counter only; it resets on refresh. No localStorage/backend yet.
-- 🔲 **Hardcoded data** — products are inline arrays; no CMS or database.
-- 🔲 **Checkout & M-Pesa integration** — mentioned in the branding, not yet implemented.
-- 🔲 `<img>` is used instead of `next/image` — switching would add automatic optimization and lazy loading.
+- **Product detail routes** — `Product/slug/slug.tsx` is a working component scaffold, but it isn't wired as a dynamic route yet (no `Product/[slug]/page.tsx`). Product cards currently don't link to detail pages.
+- **Persistent cart** — cart is a client-side counter only; it resets on refresh. No localStorage/backend yet.
+- **Hardcoded data** — products are inline arrays; no CMS or database.
+- **Checkout & M-Pesa integration** — mentioned in the branding, not yet implemented.
+- `<img>` is used instead of `next/image` — switching would add automatic optimization and lazy loading.
 
 ## Troubleshooting
 
