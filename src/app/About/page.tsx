@@ -1,22 +1,35 @@
-"use client";
-
 import Link from "next/link";
-import About from "@/features/landingPage/components/About";
+import About from "@/components/landing/About";
+
+export const metadata = {
+  title: "About Us — Byte254 Kenya",
+  description:
+    "Learn about Byte254, Kenya's verified retailer of genuine electronics and laptops.",
+};
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-black text-white py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-7xl mx-auto space-y-12">
-        
         {/* Top Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-zinc-800">
           <div>
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="inline-flex items-center text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-wider mb-2 transition"
             >
-              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              <svg
+                className="w-4 h-4 mr-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                />
               </svg>
               Back to Home
             </Link>
@@ -24,7 +37,8 @@ export default function AboutPage() {
               About Byte254 Kenya
             </h1>
             <p className="text-zinc-400 text-base mt-1 max-w-2xl">
-              Connecting Kenya to genuine, high-performance technology with transparency and local service excellence.
+              Connecting Kenya to genuine, high-performance technology with
+              transparency and local service excellence.
             </p>
           </div>
 
@@ -38,7 +52,6 @@ export default function AboutPage() {
 
         {/* Main About Component */}
         <About />
-
       </div>
     </div>
   );

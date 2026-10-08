@@ -1,22 +1,35 @@
-"use client";
-
 import Link from "next/link";
-import ContactUs from "@/features/landingPage/components/ContactUs";
+import ContactUs from "@/components/landing/ContactUs";
+
+export const metadata = {
+  title: "Contact Us — Byte254 Support",
+  description:
+    "Get in touch with Byte254 for product inquiries, orders, and warranty claims in Nairobi, Kenya.",
+};
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-black text-slate-900 dark:text-white py-12 px-4 sm:px-6 lg:px-8 font-sans transition-colors duration-300">
       <div className="max-w-7xl mx-auto space-y-12">
-        
         {/* Top Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-slate-200 dark:border-zinc-800">
           <div>
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="inline-flex items-center text-slate-500 dark:text-zinc-400 hover:text-black dark:hover:text-white text-xs font-bold uppercase tracking-wider mb-2 transition"
             >
-              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              <svg
+                className="w-4 h-4 mr-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                />
               </svg>
               Back to Home
             </Link>
@@ -24,7 +37,8 @@ export default function ContactPage() {
               Contact Byte254 Support
             </h1>
             <p className="text-slate-500 dark:text-zinc-400 text-base mt-1 max-w-2xl">
-              Fill out the form below to reach our dedicated sales and customer care team in Nairobi.
+              Fill out the form below to reach our dedicated sales and customer
+              care team in Nairobi.
             </p>
           </div>
 
@@ -38,7 +52,6 @@ export default function ContactPage() {
 
         {/* Contact Form Component */}
         <ContactUs />
-
       </div>
     </div>
   );

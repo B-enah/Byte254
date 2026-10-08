@@ -8,7 +8,7 @@ export default function ContactUs() {
     email: "",
     phone: "",
     topic: "Product Inquiry",
-    message: ""
+    message: "",
   });
   const [submitted, setSubmitted] = useState(false);
 
@@ -17,14 +17,22 @@ export default function ContactUs() {
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
-      setFormData({ name: "", email: "", phone: "", topic: "Product Inquiry", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        topic: "Product Inquiry",
+        message: "",
+      });
     }, 4000);
   };
 
   return (
-    <section id="ContactUs" className="bg-slate-50 dark:bg-black py-20 text-slate-900 dark:text-white border-t border-slate-200 dark:border-zinc-900 font-sans transition-colors duration-300">
+    <section
+      id="ContactUs"
+      className="bg-slate-50 dark:bg-black py-20 text-slate-900 dark:text-white border-t border-slate-200 dark:border-zinc-900 font-sans transition-colors duration-300"
+    >
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div className="text-center mb-10 space-y-2">
           <span className="text-xs font-black uppercase tracking-widest text-white bg-black dark:text-black dark:bg-white px-3.5 py-1 rounded-full">
             Get in Touch
@@ -33,48 +41,64 @@ export default function ContactUs() {
             Contact Byte254
           </h2>
           <p className="text-slate-500 dark:text-zinc-400 text-sm max-w-lg mx-auto">
-            Have questions about product availability, M-Pesa payments, or order status? Send us a message below.
+            Have questions about product availability, M-Pesa payments, or order
+            status? Send us a message below.
           </p>
         </div>
 
         {submitted ? (
-          <div className="p-8 rounded-2xl bg-slate-900 text-white text-center space-y-3 shadow-xl animate-fadeIn">
+          <div className="p-8 rounded-2xl bg-slate-900 text-white text-center space-y-3 shadow-xl">
             <div className="w-12 h-12 rounded-full bg-white text-black mx-auto flex items-center justify-center font-bold">
               ✓
             </div>
             <h3 className="text-xl font-bold">Message Sent Successfully!</h3>
             <p className="text-zinc-400 text-xs">
-              Thank you for contacting Byte254. Our team in Nairobi will respond to your inquiry via email/phone shortly.
+              Thank you for contacting Byte254. Our team in Nairobi will respond
+              to your inquiry via email/phone shortly.
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-xl space-y-6">
-            
+          <form
+            onSubmit={handleSubmit}
+            className="p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-xl space-y-6"
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-1.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400">
+                <label
+                  htmlFor="contact-name"
+                  className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400"
+                >
                   Full Name <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="contact-name"
                   type="text"
                   required
                   placeholder="e.g. John Kamau"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   className="w-full bg-slate-50 dark:bg-black border border-slate-300 dark:border-zinc-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-600 focus:outline-none focus:border-slate-900 dark:focus:border-white transition"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400">
+                <label
+                  htmlFor="contact-email"
+                  className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400"
+                >
                   Email Address <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="contact-email"
                   type="email"
                   required
                   placeholder="e.g. john@example.co.ke"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   className="w-full bg-slate-50 dark:bg-black border border-slate-300 dark:border-zinc-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-600 focus:outline-none focus:border-slate-900 dark:focus:border-white transition"
                 />
               </div>
@@ -82,29 +106,45 @@ export default function ContactUs() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-1.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400">
+                <label
+                  htmlFor="contact-phone"
+                  className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400"
+                >
                   Phone / WhatsApp
                 </label>
                 <input
+                  id="contact-phone"
                   type="tel"
                   placeholder="+254 700 000 000"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
                   className="w-full bg-slate-50 dark:bg-black border border-slate-300 dark:border-zinc-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-600 focus:outline-none focus:border-slate-900 dark:focus:border-white transition"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400">
+                <label
+                  htmlFor="contact-topic"
+                  className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400"
+                >
                   Inquiry Topic
                 </label>
                 <select
+                  id="contact-topic"
                   value={formData.topic}
-                  onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, topic: e.target.value })
+                  }
                   className="w-full bg-slate-50 dark:bg-black border border-slate-300 dark:border-zinc-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-slate-900 dark:focus:border-white transition"
                 >
-                  <option value="Product Inquiry">Product Inquiry / Specs</option>
-                  <option value="Order & Shipping">Order & Delivery Status</option>
+                  <option value="Product Inquiry">
+                    Product Inquiry / Specs
+                  </option>
+                  <option value="Order & Shipping">
+                    Order & Delivery Status
+                  </option>
                   <option value="M-Pesa Payment">M-Pesa Payment Issue</option>
                   <option value="Warranty Claim">Warranty Claim</option>
                 </select>
@@ -112,15 +152,21 @@ export default function ContactUs() {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400">
+              <label
+                htmlFor="contact-message"
+                className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400"
+              >
                 Your Message <span className="text-rose-500">*</span>
               </label>
               <textarea
+                id="contact-message"
                 required
                 rows={5}
                 placeholder="Write your message here..."
                 value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
                 className="w-full bg-slate-50 dark:bg-black border border-slate-300 dark:border-zinc-800 rounded-xl p-4 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-600 focus:outline-none focus:border-slate-900 dark:focus:border-white transition"
               />
             </div>
@@ -131,10 +177,8 @@ export default function ContactUs() {
             >
               Send Message
             </button>
-
           </form>
         )}
-
       </div>
     </section>
   );
